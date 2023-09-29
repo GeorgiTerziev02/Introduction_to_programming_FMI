@@ -1,1 +1,4 @@
-# Introduction_to_programming_FMI
+## Материали от семинарите и практикумите по "Увод в програмирането"
+#### Зимен семестър 2023/2024, спец. Софтуерно инженерство
+
+- [Тема 1](https://github.com/GeorgiTerziev02/Introduction_to_programming_FMI/): -
