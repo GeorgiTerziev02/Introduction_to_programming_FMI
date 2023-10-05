@@ -101,6 +101,32 @@ int a = PI; //3
 | == | Равно на | 1 == 2| False |
 | != | Не е равно на | 1 != 2 | True |
 
+!!! Никога не сравняваме променливи от тип double с ==, понеже стават грешки при представянето на числото в паметта заради закръгляне.
+
+Вместо това въвеждаме константа EPSILON, която използваме
+
+ ```c++
+#include <iostream>
+#include <cmath>
+
+const double EPSILON = 1e-9;
+
+int main() {
+    double a = 0.1 + 0.2;
+    double b = 0.3;
+
+    if (std::fabs(a - b) < EPSILON) {
+        std::cout << "Equal" << std::endl;
+    } else {
+        std::cout << "Not Equal" << std::endl;
+    }
+
+    return 0;
+}
+```
+
+**Бонус:** Как работят float и double - [тук](https://fabiensanglard.net/floating_point_visually_explained/?fbclid=IwAR1lwXOIifhzJmXkx49eniqaHE1iI7-MB6ofwR5mHgFOOO_NJWn-WxXbQBk)
+
 #### Логически оператори:
 
 | Оператор | Значение | Значение | Резултат |
