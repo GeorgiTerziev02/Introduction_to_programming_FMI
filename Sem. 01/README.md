@@ -115,13 +115,8 @@ int main() {
     double a = 0.1 + 0.2;
     double b = 0.3;
 
-    if (std::fabs(a - b) < EPSILON) {
-        std::cout << "Equal" << std::endl;
-    } else {
-        std::cout << "Not Equal" << std::endl;
-    }
-
-    return 0;
+    bool areEqual = std::fabs(a - b) < EPSILON);
+    std::cout << areEqual;
 }
 ```
 
