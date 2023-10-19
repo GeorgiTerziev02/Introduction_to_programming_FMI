@@ -1,12 +1,12 @@
 #include <iostream>
 
 int main() {
-    int n, sum = 0;
+    int number, sum = 0;
 
     do {
-        std::cin >> n;
-        sum += n;
-    } while (n != 0);
+        std::cin >> number;
+        sum += number;
+    } while (number != 0);
 
     std::cout << sum;
 }

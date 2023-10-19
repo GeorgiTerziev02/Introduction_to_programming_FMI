@@ -1,14 +1,14 @@
 #include <iostream>
 
 int main() {
-    int n;
-    std::cin >> n;
+    int number;
+    std::cin >> number;
 
     int reversed = 0;
-    while (n > 0) {
-        int lastDigit = n % 10;
+    while (number > 0) {
+        int lastDigit = number % 10;
         reversed = reversed * 10 + lastDigit;
-        n /= 10;
+        number /= 10;
     }
 
     std::cout << reversed + 1;
