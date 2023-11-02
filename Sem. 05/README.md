@@ -1,5 +1,8 @@
 ## Функции - допълнение
 
+### Стекова рамка
+TODO:
+
 ### Параметри по референция
 Алтернативно име на съществуваща променлива. Променливата може да бъде декларирана като референция чрез **&**. <br />
 Ако функция получи рефенция към променлива, тя може да променя(modify) стойността на променливата(директно). <br />
@@ -10,8 +13,8 @@ int main() {
     int a = 5;
     int& b = a;
     b++;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    std::cout << a << std::endl; // 6
+    std::cout << b << std::endl; // 6
 }
 ```
 
@@ -22,6 +25,9 @@ void swap(double &a, double &b) {
     b = temp;
 }
 ```
+
+### l-value и r-value
+TODO:
 
 ### Function overloading
 Една функция може да има безброй много overloads. <br />
@@ -119,5 +125,3 @@ void helloWorld() { // Definition
     std::cout << "Hello World!\n";
 }
 ```
-
-### Стекова рамка
