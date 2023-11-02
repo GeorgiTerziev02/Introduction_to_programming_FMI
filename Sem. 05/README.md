@@ -125,3 +125,7 @@ void swap(double &a, double &b) {
 
 ### l-value и r-value
 TODO:
+
+### Малък проект
+
+Направете демо игра - Бикове и крави
