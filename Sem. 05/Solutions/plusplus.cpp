@@ -17,7 +17,7 @@ int main() {
 	std::cout << suffixPlusPlus(a) << std::endl; // a++
 
     prefixPlusPlus(a) = 5;
-    suffixPlusPlus(a) = 5; // error - cannot assign to rvalue
+    // suffixPlusPlus(a) = 5; // error - cannot assign to rvalue
 
 	return 0;
 }
