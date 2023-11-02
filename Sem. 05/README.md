@@ -6,6 +6,16 @@
 По този начин предотвратява копирането на данни. <br />
 
 ```c++
+int main() {
+    int a = 5;
+    int& b = a;
+    b++;
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+}
+```
+
+```c++
 void swap(double &a, double &b) {
     double temp = a;
     a = b;
