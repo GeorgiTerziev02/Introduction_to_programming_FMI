@@ -123,8 +123,52 @@ void swap(double &a, double &b) {
 }
 ```
 
-### l-value и r-value
-TODO:
+
+### lvalue & rvalue
+Всеки израз в C++ е lvalue или rvalue.
+- lvalue - това са изрази, които притежават някакъв адрес в паметта, например променливи, функции, връщащи референция към някакъв тип и т.н.
+- rvalue - това са изрази, които не са lvalue
+
+```c++
+int a;
+a = 4;    // = requires a (modifiable) lvalue as it's lhs, which is a
+```
+
+lvalue-тата могат и да не са променливи
+```c++
+int x;
+
+int& getRef() {
+	return x;
+}
+
+int main() {
+	getRef() = 4;  //Okay, getRef() is an lvalue - returns a reference to the global variable x
+	return 0;
+}
+```
+Тук getRef() връща референция към глобалната променлива x, която има адрес в паметта и е lvalue, т.е. всичко е наред. <br />
+Колкото при rvalue-тата:
+
+```c++
+4 = var;        //Error
+(var + 1) = 4;  //Error
+```
+
+В случая нито 4, нито (var + 1) са lvalue, а оттам хвърчи и грешката.
+```c++
+int x;
+
+int getRef() {
+	return x;
+}
+
+int main() {
+	getRef() = 4;  //Error
+}
+```
+Тук getRef() вече е rvalue - вместо да се връща референция към обекта x, се връща някакво негово локално копие.
+
 
 ### Малък проект
 
