@@ -1,36 +1,63 @@
 #include <iostream>
 
-const int DIGIT_COUNT = 4;
+const unsigned DIGIT_COUNT = 4;
 
-bool isValidLength(int number) {
-	
+unsigned getNumberLength(unsigned number) {
+	if (number == 0) {
+		return 1;
+	}
+
+	unsigned length = 0;
+	while (number != 0) {
+		length++;
+		number /= 10;
+	}
+
+	return length;
 }
 
-bool hasUniqueDigits(int number) {
-
+bool hasValidLength(unsigned number) {
+	return getNumberLength(number) == DIGIT_COUNT;
 }
 
-void readValidNumber(int& number) {
+bool hasUniqueDigits(unsigned number) {
+	return true;
+}
+
+bool isValidInput(unsigned input) {
+	// TODO: why order is important?
+	return hasValidLength(input) && hasUniqueDigits(input);
+}
+
+void readNumberInput(unsigned& input) {
 	do {
-		std::cin >> number;
-	} while (!isValidLength(number) || !hasUniqueDigits(number));
+		std::cout << "Enter number with four unique digits: ";
+		std::cin >> input;
+	} while (!isValidInput(input));
+}
+
+unsigned calculateBulls(unsigned guess, unsigned toGuess) {
+	return 0;
+}
+
+unsigned calculateCows(unsigned guess, unsigned toGuess) {
+	return 0;
 }
 
 int main() {
-	int toGuess;
-	readValidNumber(toGuess);
+	unsigned toGuess;
+	readNumberInput(toGuess);
 
-	while (true) {
-		int guess;
-		readValidNumber(guess);
-
-		int bulls;
-		int cows;
+	unsigned guess, bulls, cows;
+	do {
+		readNumberInput(guess);
 
 		// ... calculate cows and bull
+		bulls = calculateBulls(guess, toGuess);
+		cows = calculateCows(guess, toGuess);
 
-		if (bulls == DIGIT_COUNT) {
-			break;
-		}
-	}
+		std::cout << "Bulls: " << bulls << " Cows: " << cows << std::endl;
+	} while (bulls != DIGIT_COUNT);
+
+	std::cout << "GG, You won" << std::endl;
 }
