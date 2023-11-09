@@ -22,12 +22,12 @@ bool hasValidLength(unsigned number) {
 
 bool containsDigit(unsigned number, unsigned digit) {
 	// TODO: why only 9?
-	if(digit > 9) {
+	if (digit > 9) {
 		return false;
 	}
 
 	// handle number = 0 && digit == 0
-	if(number == digit) {
+	if (number == digit) {
 		return true;
 	}
 
@@ -43,11 +43,21 @@ bool containsDigit(unsigned number, unsigned digit) {
 }
 
 bool hasUniqueDigits(unsigned number) {
+	if (number == 0) {
+		return true;
+	}
+
+	while (number != 0) {
+		unsigned lastDigit = number % 10;
+		if (containsDigit(number /= 10, lastDigit)) {
+			return false;
+		}
+	}
+
 	return true;
 }
 
 bool isValidInput(unsigned input) {
-	// TODO: why order is important?
 	return hasValidLength(input) && hasUniqueDigits(input);
 }
 
@@ -59,11 +69,31 @@ void readNumberInput(unsigned& input) {
 }
 
 unsigned calculateBulls(unsigned guess, unsigned toGuess) {
-	return 0;
+	unsigned result = 0;
+	while (guess != 0) {
+		unsigned firstNumberLastDigit = guess % 10;
+		unsigned secondNumberLastDigit = toGuess % 10;
+
+		if (firstNumberLastDigit == secondNumberLastDigit) {
+			result++;
+		}
+
+		guess /= 10;
+		toGuess /= 10;
+	}
+
+	return result;
 }
 
-unsigned calculateCows(unsigned guess, unsigned toGuess) {
-	return 0;
+unsigned calculateBullsAndCowsSum(unsigned guess, unsigned toGuess) {
+	unsigned result = 0;
+	while (guess != 0) {
+		unsigned lastDigit = guess % 10;
+		result += containsDigit(toGuess, lastDigit);
+		guess /= 10;
+	}
+
+	return result;
 }
 
 int main() {
@@ -74,9 +104,8 @@ int main() {
 	do {
 		readNumberInput(guess);
 
-		// ... calculate cows and bull
 		bulls = calculateBulls(guess, toGuess);
-		cows = calculateCows(guess, toGuess);
+		cows = calculateBullsAndCowsSum(guess, toGuess) - bulls;
 
 		std::cout << "Bulls: " << bulls << " Cows: " << cows << std::endl;
 	} while (bulls != DIGIT_COUNT);
