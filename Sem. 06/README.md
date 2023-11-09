@@ -59,13 +59,13 @@ i е брой "отмествания" надясно.  <br />
 ```c++
 #include <iostream>
 
-void Print(const int arr[], int len) {
+void print(const int arr[], int len) {
 	for (int i = 0; i < len; i++) {
 		std::cout << arr[i] << " ";
 	}
 }
 
-void Increment(int arr[], unsigned size) {
+void increment(int arr[], unsigned size) {
 	for (unsigned i = 0; i < size; i++) {
 		arr[i]++;
 	}
@@ -75,7 +75,7 @@ int main() {
 	const int SIZE = 4;
 	int arr[SIZE]{ 1, 2, 3, 4 };
 
-  increment(arr, SIZE);
+  	increment(arr, SIZE);
 	print(arr, SIZE);
 
 	return 0;
