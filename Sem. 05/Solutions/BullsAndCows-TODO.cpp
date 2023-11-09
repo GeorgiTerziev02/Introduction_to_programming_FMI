@@ -20,6 +20,28 @@ bool hasValidLength(unsigned number) {
 	return getNumberLength(number) == DIGIT_COUNT;
 }
 
+bool containsDigit(unsigned number, unsigned digit) {
+	// TODO: why only 9?
+	if(digit > 9) {
+		return false;
+	}
+
+	// handle number = 0 && digit == 0
+	if(number == digit) {
+		return true;
+	}
+
+	while (number != 0) {
+		if (number % 10 == digit) {
+			return true;
+		}
+
+		number /= 10;
+	}
+
+	return false;
+}
+
 bool hasUniqueDigits(unsigned number) {
 	return true;
 }
