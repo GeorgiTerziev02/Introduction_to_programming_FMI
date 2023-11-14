@@ -12,7 +12,7 @@ void readArray(int* arr, unsigned length) {
 	}
 }
 
-void printArray(int* arr, unsigned length) {
+void printArray(const int* arr, unsigned length) {
 	for (unsigned i = 0; i < length; i++) {
 		std::cout << arr[i] << " ";
 	}
