@@ -1,12 +1,12 @@
 #include <iostream>
 
-int findNotDuplicated(const int* arr, unsigned size) {
+int findNotDuplicated(const int* arr, unsigned length) {
     int result = 0;
     // XOR of a number with itself is 0
     // XOR of a number with 0 is the number itself
     // Every number has different binary representation
     // So the XOR of all numbers in the array will be the number that is not duplicated
-    for (unsigned i = 0; i < size; i++) {
+    for (unsigned i = 0; i < length; i++) {
         result ^= arr[i];
     }
 
