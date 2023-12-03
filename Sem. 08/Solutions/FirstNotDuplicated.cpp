@@ -20,6 +20,6 @@ int main() {
     int arr2[] = { 5, 5, 5, 5, 1, 5, 5 };
 
     std::cout << findNotDuplicated(arr1, 7);
-    // Will this work?
+    // Will this work? Why?
     // std::cout << findNotDuplicated(arr2, 7);
 }
