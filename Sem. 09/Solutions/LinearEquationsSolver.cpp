@@ -1,4 +1,6 @@
-// Stolen from Angel Dimitriev https://github.com/Angeld55/Introduction_to_programming_FMI/blob/main/Sem.%2009/linearEquationsSolver.cpp
+// Stolen from Angel Dimitriev
+// https://github.com/Angeld55/Introduction_to_programming_FMI/blob/main/Sem.%2009/linearEquationsSolver.cpp
+
 #include <iostream>
 using namespace std;
 
