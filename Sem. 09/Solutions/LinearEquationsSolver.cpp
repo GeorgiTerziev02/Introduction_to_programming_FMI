@@ -1,69 +1,74 @@
-// Stolen from Angel Dimitriev
+// Stolen from Angel Dimitriev and refactored a bit
 // https://github.com/Angeld55/Introduction_to_programming_FMI/blob/main/Sem.%2009/linearEquationsSolver.cpp
-// TODO: refactor
 
 #include <iostream>
-using namespace std;
 
-void printMatrix(double arr[][3], size_t rows, size_t colls)
-{
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j< colls;j ++)
-		{
-			cout << arr[i][j]<< " ";
+void printArr(double arr[], unsigned length) {
+	for (unsigned i = 0; i < length; i++) {
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+void printMatrix(double arr[][3], unsigned rows, unsigned colls) {
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j< colls;j ++) {
+			std::cout << arr[i][j]<< " ";
 		}
-		cout << endl;
+		std::cout << std::endl;
 	}
 }
 
-void divideBy(double arr[], size_t size, double by)
-{
-	for (int i = 0; i < size; i++)
+void divideRowBy(double arr[], unsigned colls, double by) {
+	for (int i = 0; i < colls; i++) {
 		arr[i] /= by;
+	}
 }
-void substract(double first[], double second[], double coef, size_t size)
-{
-	for (int i = 0; i < size; i++)
-		first[i] -= (second[i] * coef);
+
+void substractFromRow(double rowToSubtractFrom[], double rowToSubtract[], double coef, unsigned colls) {
+	for (int i = 0; i < colls; i++) {
+		rowToSubtractFrom[i] -= (rowToSubtract[i] * coef);
+	}
 }
-void makeAllZeros(double matrix[][3], size_t rows, size_t colls, int currentRow)
-{
-	for (int i = 0; i < rows; i++)
-	{
-		if (i == currentRow)
+
+void substractFromOtherRows(double matrix[][3], unsigned rows, unsigned colls, int currentRow) {
+	for (int i = 0; i < rows; i++) {
+		if (i == currentRow) {
 			continue;
-		substract(matrix[i], matrix[currentRow], matrix[i][currentRow], colls);
+		}
+		
+		substractFromRow(matrix[i], matrix[currentRow], matrix[i][currentRow], colls);
 	}
 }
 
-void gauss(double matrix[][3], size_t n, double result[])
-{
-	size_t rows = n;
-	size_t colls = n + 1;
-
-	for (int i = 0; i < rows; i++)
-	{
-		divideBy(matrix[i], colls, matrix[i][i]);
-		makeAllZeros(matrix, rows, colls, i);
+void collectResults(double matrix[][3], unsigned rows, unsigned colls, double results[]) {
+	for (int i = 0; i < rows; i++) {
+		results[i] = matrix[i][colls - 1];
 	}
-	for (int i = 0; i < rows; i++)
-		result[i] = matrix[i][colls - 1]; 
-
 }
 
-int main()
-{
-	constexpr size_t rows = 2;
-	constexpr size_t colls = 3;
+void gauss(double matrix[][3], unsigned n, double results[]) {
+	unsigned rows = n;
+	unsigned colls = n + 1;
+
+	for (int i = 0; i < rows; i++) {
+		// At every point matrix[i][i] is the pivot
+		divideRowBy(matrix[i], colls, matrix[i][i]);
+		substractFromOtherRows(matrix, rows, colls, i);
+	}
+
+	collectResults(matrix, rows, colls, results);
+}
+
+int main() {
+	const unsigned rows = 2;
+	const unsigned colls = 3;
 
 	double m[rows][colls] = { {2, 6, 40},  // 2x + 6y = 40
 							  {4, 1, 14} };// 4x +  y = 14
 
-	double result[rows];
-	gauss(m, rows, result);
+	double results[rows];
+	gauss(m, rows, results);
 
-	for (int i = 0; i < rows; i++)
-		cout << result[i] << " ";
-
+	printArr(results, rows);
 }
