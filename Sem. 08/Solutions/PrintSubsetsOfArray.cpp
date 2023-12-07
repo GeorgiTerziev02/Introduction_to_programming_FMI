@@ -5,7 +5,7 @@ void printSubset(const int* arr, unsigned length, unsigned mask) {
 	for (unsigned i = 0; i < length; i++) {
 		// if the i-th bit of the mask is 1
 		// then the i-th element of the array is in the subset
-		if (mask % 2 != 0) {
+		if (mask & 1) {
 			std::cout << arr[i] << " ";
 		}
 		// /= 2
