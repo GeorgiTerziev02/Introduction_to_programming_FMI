@@ -7,9 +7,9 @@
 #include <iostream>
 
 // Using rows and cols just to try out working with matrix
-const int ROWS = 3;
-const int COLS = 3;
-const int INITIAL_VALUE = 0;
+const unsigned ROWS = 3;
+const unsigned COLS = 3;
+const unsigned INITIAL_VALUE = 0;
 
 int getPlayer(bool isFirstPlayer) {
 	// return 1 + !isFirstPlayer;
@@ -118,7 +118,7 @@ int main() {
 	// isFirstPlayer => 1
 	// !isFirstPlayer => 2
 	bool isFirstPlayer = true;
-	int roundCounter = 0;
+	unsigned roundCounter = 0;
 	while (roundCounter < ROWS * COLS) {
 		std::cout << "Player " << getPlayer(isFirstPlayer) << " enter coordinates: ";
 		int x, y;
