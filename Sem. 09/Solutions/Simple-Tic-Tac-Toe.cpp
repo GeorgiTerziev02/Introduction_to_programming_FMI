@@ -130,7 +130,7 @@ int main() {
 			std::cout << std::endl << std::endl;
 			std::cout << "Player " << getPlayer(isFirstPlayer) << " wins!" << std::endl;
 			printBoard(board, ROWS, COLS);
-			break;
+			return;
 		}
 
 		isFirstPlayer = !isFirstPlayer;
@@ -138,8 +138,7 @@ int main() {
 		roundCounter++;
 	}
 
-	if (roundCounter == ROWS * COLS) {
-		std::cout << std::endl << std::endl;
-		std::cout << "Draw!" << std::endl;
-	}
+	// if loop ended => draw
+	std::cout << std::endl << std::endl;
+	std::cout << "Draw!" << std::endl;
 }
