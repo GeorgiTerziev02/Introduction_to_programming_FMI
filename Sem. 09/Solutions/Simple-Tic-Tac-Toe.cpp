@@ -118,8 +118,8 @@ int main() {
 	// isFirstPlayer => 1
 	// !isFirstPlayer => 2
 	bool isFirstPlayer = true;
-	unsigned roundCounter = 0;
-	while (roundCounter < ROWS * COLS) {
+
+	for(unsigned roundCounter = 0; roundCounter < ROWS * COLS; roundCounter++) {
 		std::cout << "Player " << getPlayer(isFirstPlayer) << " enter coordinates: ";
 		int x, y;
 		enterValidCoordinates(x, y, board);
@@ -135,7 +135,6 @@ int main() {
 
 		isFirstPlayer = !isFirstPlayer;
 		printBoard(board, ROWS, COLS);
-		roundCounter++;
 	}
 
 	// if loop ended => draw

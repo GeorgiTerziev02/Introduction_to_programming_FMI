@@ -48,8 +48,7 @@ int main() {
 	initBoardWithValue(board, INITIAL_VALUE);
 
     // TODO: which player is playing now?
-	unsigned roundCounter = 0;
-	while (roundCounter < DIMENSION * DIMENSION) {
+	for(unsigned roundCounter = 0; roundCounter < DIMENSION * DIMENSION; roundCounter++) {
 		// std::cout << "Player " << getPlayer(isFirstPlayer) << " enter coordinates: ";
 		// int x, y;
 		// enterValidCoordinates(x, y, board);
@@ -60,16 +59,14 @@ int main() {
 			std::cout << std::endl << std::endl;
 			// std::cout << "Player " << getPlayer(isFirstPlayer) << " wins!" << std::endl;
 			printBoard(board);
-			break;
+			return;
 		}
 
 		// isFirstPlayer = !isFirstPlayer;
 		printBoard(board);
-		roundCounter++;
 	}
 
-	if (roundCounter == DIMENSION * DIMENSION) {
-		std::cout << std::endl << std::endl;
-		std::cout << "Draw!" << std::endl;
-	}
+	// if loop ended => draw
+	std::cout << std::endl << std::endl;
+	std::cout << "Draw!" << std::endl;
 }
