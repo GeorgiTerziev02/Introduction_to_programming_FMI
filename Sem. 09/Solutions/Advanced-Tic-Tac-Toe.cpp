@@ -38,31 +38,75 @@ void enterValidCoordinates(int& x, int& y, char board[][DIMENSION]) {
 	} while (!isInsideBoard(x, y) || isPopulatedField(x, y, board));
 }
 
-bool hasWinner(char board[][DIMENSION]) {
-	// TODO: define a winner
-	return false;
+
+char getPlayer(unsigned currentPlayer) {
+	return 'A' + currentPlayer;
 }
 
+bool areSameCharactersInDirection(
+	char board[DIMENSION][DIMENSION], int x, int y, int rowIncrement, int colIncrement
+) {
+	bool areSameCharacters = true;
+	char initialCharacter = board[x][y];
+
+	while (isInsideBoard(x, y)) {
+		if (board[x][y] != initialCharacter) {
+			areSameCharacters = false;
+			break;
+		}
+
+		x += rowIncrement;
+		y += colIncrement;
+	}
+
+	return areSameCharacters;
+}
+
+bool areSameCharactersInLine(char board[DIMENSION][DIMENSION], int x, int y, int rowIncrement, int colIncrement) {
+	return areSameCharactersInDirection(board, x, y, rowIncrement, colIncrement) // forward
+		&& areSameCharactersInDirection(board, x, y, -rowIncrement, -colIncrement); // backward
+}
+
+bool hasWinner(char board[][DIMENSION], int x, int y) {
+	if (
+		areSameCharactersInLine(board, x, y, 0, 1) && // check row
+		areSameCharactersInLine(board, x, y, 1, 0)	  // check col
+		) {
+		return true;
+	}
+
+	if (x == y && areSameCharactersInLine(board, x, y, 1, 1)) {
+		return true;
+	}
+
+	if (x + y == DIMENSION - 1 && areSameCharactersInLine(board, x, y, 1, -1)) {
+		return true;
+	}
+
+	return false;
+}
 int main() {
 	char board[DIMENSION][DIMENSION];
 	initBoardWithValue(board, INITIAL_VALUE);
 
-    // TODO: which player is playing now?
-	for(unsigned roundCounter = 0; roundCounter < DIMENSION * DIMENSION; roundCounter++) {
-		// std::cout << "Player " << getPlayer(isFirstPlayer) << " enter coordinates: ";
-		// int x, y;
-		// enterValidCoordinates(x, y, board);
+	for (
+		unsigned roundCounter = 0, unsigned currentPlayer = 0;
+		roundCounter < DIMENSION * DIMENSION;
+		roundCounter++, (++currentPlayer) %= PLAYERS_COUNT
+		) {
+		std::cout << "Player " << getPlayer(currentPlayer) << " enter coordinates: ";
+		int x, y;
+		enterValidCoordinates(x, y, board);
 
-		// board[x][y] = getPlayer(isFirstPlayer);
+		board[x][y] = getPlayer(currentPlayer);
 
-		if (hasWinner(board)) {
+		if (hasWinner(board, x, y)) {
 			std::cout << std::endl << std::endl;
-			// std::cout << "Player " << getPlayer(isFirstPlayer) << " wins!" << std::endl;
+			std::cout << "Player " << getPlayer(currentPlayer) << " wins!" << std::endl;
 			printBoard(board);
 			return;
 		}
 
-		// isFirstPlayer = !isFirstPlayer;
 		printBoard(board);
 	}
 
