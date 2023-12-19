@@ -220,9 +220,26 @@ int main() {
 }
 ```
 
-Note:
+#### Проблеми при четене с последователни cin и cin.getline
+
 След четене с ``cin >>`` остават табулации/ws/newline character в потока.
-Следователно последващо чете със cin.getline ще прочете тези символи.
+Следователно последващо чете със cin.getline ще прочете тези символи!
+
+За да премахнем излишните символи оставени в input потока трябва да добавим следния код преди
+да използваме cin.getline:
+
+```c++
+// Remove all error flags and characters from the input buffer
+void clearInputBuffer() {
+	// because of using both getline and cin we have to cin.ignore;
+	// cin leaves the newline/white-spaces/tabs in the stream which will be read as input from the getline
+
+	cin.clear();	// clears errors flags from the cin
+	cin.sync();	// discard unread characters from the input buffer
+	cin.ignore();	// discard characters from the input buffer
+        // you can pass a number to cin.ignore to set how many symbols to be ignored
+}
+```
 
 
 ## Примери:
@@ -236,9 +253,11 @@ Note:
 
 5. Напишете имплементация на **аtoi** - *преобразуване на стринг в число*
 
-6. Напишете имплементация на **searchInText** - *търсене в текст*.
+6. Напишете импелментация на **getCharOccurrencesCount** - *брой срещания на кнокретен символ в текст*.
+   
+7. Напишете имплементация на **isPrefix** - *проверка дали низ е префикс на друг низ*
 
-7. Напишете импелментация на **getCharOccurrencesCount** - *брой срещания на кнокретен символ в текст*.
+8. Напишете имплементация на **searchInText** - *търсене в текст*.
 
 
 **Задача 1:** Напишете функция, която приема 3 стринга - text, where и what и замества в text всяко срещане на where с what.
