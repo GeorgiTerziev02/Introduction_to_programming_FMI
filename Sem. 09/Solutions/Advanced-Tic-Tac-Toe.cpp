@@ -94,15 +94,16 @@ int main() {
 		roundCounter < DIMENSION * DIMENSION;
 		roundCounter++, (++currentPlayer) %= PLAYERS_COUNT
 		) {
-		std::cout << "Player " << getPlayer(currentPlayer) << " enter coordinates: ";
+		char currentPlayerSymbol = getPlayer(currentPlayer);
+		std::cout << "Player " << currentPlayerSymbol << " enter coordinates: ";
 		int x, y;
 		enterValidCoordinates(x, y, board);
 
-		board[x][y] = getPlayer(currentPlayer);
+		board[x][y] = currentPlayerSymbol;
 
 		if (hasWinner(board, x, y)) {
 			std::cout << std::endl << std::endl;
-			std::cout << "Player " << getPlayer(currentPlayer) << " wins!" << std::endl;
+			std::cout << "Player " << currentPlayerSymbol << " wins!" << std::endl;
 			printBoard(board);
 			return;
 		}
