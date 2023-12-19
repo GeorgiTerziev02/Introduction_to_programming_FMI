@@ -197,7 +197,7 @@ int main() {
 Четене без да пропуска ws/табулации/нови редове
 
 ```c++
-std::cin.getline(char[] buffer, size_t count, char delimeter = '\0');
+std::cin.getline(char[] buffer, size_t count, char delimeter = '\n');
 ```
  
 Където:
