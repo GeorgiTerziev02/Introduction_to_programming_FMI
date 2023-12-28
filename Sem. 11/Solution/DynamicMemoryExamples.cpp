@@ -4,9 +4,9 @@ int dynamicMemoryTest() {
 	int length;
 	std::cin >> length;
 
-	// ptr to just a int in the heap
+	// ptr in the stack, pointing to just a int in the heap
 	int* intPtr = new int(5);
-	// ptr to arr of ints in the heap
+	// ptr in the stack, pointing to arr of ints in the heap
 	int* arr = new int[length];
 	
 	// !!!
