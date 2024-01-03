@@ -130,8 +130,8 @@ bool searchInText2(const char* text, const char* searchedText) {
 	size_t searcheTextLength = myStrLen(searchedText);
 	while(searcheTextLength <= textLength) {
 		if (isPrefix(searchedText, text)) {
-            return true;
-        }
+            		return true;
+        	}
         
 		text++;
 		textLength--;
