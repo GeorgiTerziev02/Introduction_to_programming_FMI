@@ -63,3 +63,4 @@ void f(std::ifstream& ifs) {
     // ...
 }
 ```
+Credits: [**desiish**](https://github.com/desiish/UP_Pract_2023_2024/blob/main/utils/work_with_files.md)
