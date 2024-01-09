@@ -26,8 +26,8 @@ Cheatsheet - https://www.bigocheatsheet.com/
 ### Алгоритми за търсене
 * Linear Seach - сложност O(n)
 * Binary Search - сложност O(log n)
-* Lower bound binary search O(log n)
-* Upper bound binary search O(log n)
+* Lower bound binary search - сложност O(log n)
+* Upper bound binary search - сложност O(log n)
 
 ### Алгоритми за сортиране
 
@@ -38,6 +38,9 @@ Cheatsheet - https://www.bigocheatsheet.com/
 *Стабилна сортировка - сортировка, при която два елемента с еднакви стойности остават в същата последователност в сортирания масив, в каквато са били и в първоначалния
 
 В курса по УП ще разгледаме следните сортировки:
+
+**Note!**: Не трябва да знаете свойствата, които не са показани в час
+
 #### Bubble sort (stable)
   ![image](https://github.com/GeorgiTerziev02/UP-Private/assets/49128895/ebfffec3-f823-4a59-bbde-dc1b90d40700)
 
