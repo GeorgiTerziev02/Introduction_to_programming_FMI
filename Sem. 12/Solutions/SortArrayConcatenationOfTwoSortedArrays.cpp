@@ -14,10 +14,8 @@ int getSeparationIndex(const int* arr, size_t size) {
 }
 
 int* mergeSortedArrays(
-	const int* first,
-	size_t firstLength,
-	const int* second,
-	size_t secondLength
+	const int* first, size_t firstLength,
+	const int* second, size_t secondLength
 ) {
 	if (!first || !second) {
 		return nullptr;
