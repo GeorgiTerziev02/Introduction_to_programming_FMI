@@ -3,7 +3,7 @@ int lowerBoundBinarySearch(const int* arr, size_t length, int target) {
     	int resultIndex = -1;
 
 	while (leftIndex <= rightIndex) {
-        size_t midIndex = leftIndex + (rightIndex - leftIndex) / 2;
+        	size_t midIndex = leftIndex + (rightIndex - leftIndex) / 2;
 
 		if (arr[midIndex] == target) {
             		resultIndex = midIndex;
